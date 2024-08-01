@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo 3D en AR</title>
+    <!-- Importa el componente model-viewer desde un CDN -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@latest/dist/model-viewer.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Para evitar barras de desplazamiento */
+        }
+        model-viewer {
+            width: 100vw;
+            height: 100vh;
+            display: block; /* Asegura que el modelo ocupe toda la pantalla */
+        }
+        /* Puedes agregar más estilos según sea necesario */
+        #ar-prompt img {
+            width: 50px; /* Ajusta el tamaño de la imagen según tu preferencia */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Inserta el componente model-viewer aquí -->
+    <model-viewer src="BIM.glb" 
+                  ar 
+                  ar-modes="webxr scene-viewer quick-look" 
+                  camera-controls 
+                  poster="poster.webp" 
+                  shadow-intensity="1" 
+                  environment-image="spruit_sunrise_1k_HDR.hdr" 
+                  exposure="0.76" 
+                  tone-mapping="neutral">
+        <div class="progress-bar hide" slot="progress-bar">
+            <div class="update-bar"></div>
+        </div>
+        <button slot="ar-button" id="ar-button">
+            View in your space
+        </button>
+        <div id="ar-prompt">
+            <img src="https://modelviewer.dev/shared-assets/icons/hand.png" alt="AR prompt">
+        </div>
+    </model-viewer>
+</body>
+</html>
